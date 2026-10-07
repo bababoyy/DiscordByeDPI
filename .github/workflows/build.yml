@@ -1,0 +1,30 @@
+name: Build DiscordByeDPI
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test SOCKS5 listener diagnostic
+        run: python3 tests/test_probe.py
+      - name: Test Foundation hooks on macOS
+        run: |
+          xcrun --sdk macosx clang -Wall -Wextra -Werror -c local_probe.c -o /tmp/dbd-probe.o
+          xcrun --sdk macosx clang -fobjc-arc -fblocks -Wall -Wextra -Werror -DDBD_TEST \
+            -framework Foundation \
+            DiscordByeDPI.m /tmp/dbd-probe.o tests/configuration.m -o /tmp/dbd-config-test
+          /tmp/dbd-config-test
+      - name: Build iPhone dylib
+        run: bash build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DiscordByeDPI-arm64
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
