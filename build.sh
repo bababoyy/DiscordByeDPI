@@ -5,7 +5,7 @@ if ! command -v xcrun >/dev/null; then
   echo 'The iOS build needs Xcode on macOS. Use the included GitHub Actions workflow.' >&2
   exit 1
 fi
-port="${DBD_PROXY_PORT:-1080}"
+port="${DBD_PROXY_PORT:-10800}"
 if ! [[ "$port" =~ ^[0-9]{1,5}$ ]] || (( 10#$port < 1 || 10#$port > 65535 )); then
   echo 'DBD_PROXY_PORT must be 1..65535.' >&2
   exit 1

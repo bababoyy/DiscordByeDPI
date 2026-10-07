@@ -45,7 +45,7 @@ It applies a local SOCKS5 configuration to default and ephemeral Foundation
 session configurations, and to both public URLSession configuration factories.
 The factory hooks make a copy so caller-owned configurations remain unchanged.
 Existing HTTP/SOCKS proxy configuration is replaced; other session settings are
-preserved. The default endpoint is `127.0.0.1:1080`.
+preserved. The default endpoint is `127.0.0.1:10800`.
 
 The constructor also checks the local endpoint's SOCKS5 greeting. The check
 contacts only localhost, does not authenticate to Discord, and does not test
@@ -76,7 +76,7 @@ availability without URLs, tokens, request bodies, or account information.
 In the workflow's build step, set `env: { DBD_PROXY_PORT: 'YOUR_PORT' }`.
 Locally on macOS: `DBD_PROXY_PORT=YOUR_PORT bash build.sh`.
 Use the same port in ByeDPIBg. The configuration smoke test uses the default
-1080; that test runs separately before the iOS build.
+10800; that test runs separately before the iOS build.
 
 ## Verification status
 

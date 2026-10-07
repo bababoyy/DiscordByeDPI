@@ -17,8 +17,8 @@ blocked connection is a different failure from an IPA that cannot launch.
 
 1. Import ByeDPIBg into LiveContainer.
 2. Launch it using LiveContainer's **Multitask** action.
-3. Configure/start its SOCKS listener at **127.0.0.1:1080** (or your custom build
-   port). Confirm the app's actual port; do not assume it is 1080 by default.
+3. Configure/start its SOCKS listener at **127.0.0.1:10800** (or your custom build
+   port). Confirm the app's actual port; do not assume it is 10800 by default.
 4. Select/test a DPI strategy against the Discord domains using the app's
    available controls. Strategy success depends on your network. We have not
    selected a verified Turkey/ISP-specific strategy for you.

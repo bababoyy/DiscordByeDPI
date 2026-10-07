@@ -5,7 +5,7 @@ static void Check(NSURLSessionConfiguration *config) {
     NSDictionary *proxy = config.connectionProxyDictionary;
     NSCAssert([proxy[@"SOCKSEnable"] boolValue], @"SOCKS disabled");
     NSCAssert([proxy[@"SOCKSProxy"] isEqual:@"127.0.0.1"], @"Wrong host");
-    NSCAssert([proxy[@"SOCKSPort"] intValue] == 1080, @"Wrong port");
+    NSCAssert([proxy[@"SOCKSPort"] intValue] == 10800, @"Wrong port");
 }
 
 int main(void) {

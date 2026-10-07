@@ -5,7 +5,7 @@
 #include "local_probe.h"
 
 #ifndef DBD_PROXY_PORT
-#define DBD_PROXY_PORT 1080
+#define DBD_PROXY_PORT 10800
 #endif
 
 static NSObject *DBDLock;
